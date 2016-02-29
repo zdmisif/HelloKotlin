@@ -1,3 +1,3 @@
-# HelloKotlin
+# RssReader By Kotlin
 
-尝试使用kotlin进行开发测试
+尝试使用kotlin开发一个RSS阅读器
