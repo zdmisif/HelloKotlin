@@ -1,8 +1,9 @@
-package com.hzz.hellokotlin
+package com.hzz.hellokotlin.function
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
+import com.hzz.hellokotlin.R
 
 class MainActivity : AppCompatActivity() {
     private val mKotlinTxt: TextView by lazy {
@@ -20,15 +21,8 @@ class MainActivity : AppCompatActivity() {
         for (item in list) {
             println(item);
         }
-        var javaClass = JavaClass()
-        println(javaClass.name + " " + javaClass.id);
-        javaClass.name = "ming";
-        javaClass.id = 100;
-        println(javaClass.name + " " + javaClass.id);
         var nullable: Int? = 0;
         var nonNullable: Int = 2;
-
-
         mKotlinTxt.setText("Kotlin");
         nullView?.setText("123");
 
