@@ -1,30 +1,26 @@
 package com.hzz.hellokotlin.function
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.widget.TextView
+import android.util.Log
 import com.hzz.hellokotlin.R
+import com.hzz.hellokotlin.function.base.BaseActivity
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
-class MainActivity : AppCompatActivity() {
-    private val mKotlinTxt: TextView by lazy {
-        findViewById(R.id.kotlin_txt) as TextView;
-    }
-    private val nullView: TextView? = null;
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        var list = arrayListOf(1, 2, 3, 4);
-        list.add(5);
-        list.remove(3);
-        for (item in list) {
-            println(item);
-        }
-        var nullable: Int? = 0;
-        var nonNullable: Int = 2;
-        mKotlinTxt.setText("Kotlin");
-        nullView?.setText("123");
+        var client = OkHttpClient();
+        var request = Request.Builder()
+                .url("https://gank.io/feed")
+                .build();
+        var thread = Thread(Runnable {
+            var response = client.newCall(request).execute();
+            Log.i("msg", response.body().string())
+        })
+        thread.start()
 
     }
 }
